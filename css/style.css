@@ -148,4 +148,67 @@ html, body {
   font-size: 23px;
   line-height: 27px;
 }
+
+.game-container .game-body .tile-board-div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game-container .game-body .tile-board-div .tile-board {
+  --grid: 12;
+  --padGap: 2px;
+  --font: calc(22.83px / 2);
+  width: 300px;
+  height: 300px;
+  background: #000;
+  border-radius: 3px;
+  display: -ms-grid;
+  display: grid;
+  padding: var(--padGap);
+  -ms-grid-columns: (1fr)[var];
+      grid-template-columns: repeat(var(--grid), 1fr);
+  -ms-grid-rows: (1fr)[var];
+      grid-template-rows: repeat(var(--grid), 1fr);
+  grid-gap: var(--padGap);
+}
+
+.game-container .game-body .tile-board-div .tile-board .tile-cell {
+  width: 100%;
+  height: 100%;
+  background: #373737;
+  border-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.game-container .game-body .tile-board-div .tile-board .tile-cell .tile {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: purple;
+  font-size: var(--font);
+  font-weight: bold;
+  color: #fff;
+}
 /*# sourceMappingURL=style.css.map */
