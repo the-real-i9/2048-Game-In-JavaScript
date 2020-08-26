@@ -5,11 +5,7 @@
     font-family: 'Open Sans';
 }
 
-$topColor: #1b1b1b;
-$gameBgColor: #444;
 $tagColor: rgb(146, 146, 146);
-$tileCell: #373737;
-$black: #000;
 $white: #fff;
 
 @mixin flex($jc:null, $ai:null, $dir:null) {
@@ -24,13 +20,40 @@ html, body {
     height: 100%;
 }
 
+$colors: (
+    1: #8c00da,
+    2: #ed124b,
+    3: #f28c0d,
+    4: #00950d,
+    5: #00575f,
+    6: #f60023,
+    7: #ed450b,
+    8: #2ecc48,
+    9: #521750,
+    10: aqua,
+    11: brown,
+    12: magenta,
+    13:salmon,
+    14: orangered,
+    15: yellowgreen,
+    16: teal,
+    17: blueviolet,
+
+);
+
 .game-container {
+    --topColor: #1b1b1b;
+    --gameBgColor: #444;
+    --tileCell: #373737;
+    --primCol: #000;
+    --pad: #00ffbf;
     width: 100%;
     height: 100%;
+    display: none;
     .top {
         width: 100%;
         height: 12%;
-        background: $topColor;
+        background: var(--topColor);
         color: $white;
         @include flex(center, center);
 
@@ -56,7 +79,7 @@ html, body {
                     color: $tagColor;
 
                     .pad {
-                        color: #00ffbf; // Random Colors
+                        color: var(--pad); // Random Colors
                     }
                 }
             }
@@ -71,11 +94,11 @@ html, body {
     .game-body {
         width: 100%;
         height: 88%;
-        background: $gameBgColor;
+        background: var(--gameBgColor);
 
         .score-div {
             width: 100%;
-            height: 70px;
+            height: 17%;
             @include flex(flex-end, center);
             
             .score-cont {
@@ -85,7 +108,7 @@ html, body {
                     border-radius: 5px;
                     width: 80px;
                     height: 50px;
-                    background: $black;
+                    background: var(--primCol);
                     color: $white;
                     @include flex(center, center, column);
 
@@ -118,9 +141,10 @@ html, body {
                 --padGap: 6px;
                 // size of the cell divided by 2
                 --font: calc(92px / 2);
+                // here get the screenWith
                 width: 300px;
                 height: 300px;
-                background: $black;
+                background: var(--primCol);
                 border-radius: 3px;
                 display: grid;
                 padding: var(--padGap);
@@ -131,7 +155,7 @@ html, body {
                 .tile-cell {
                     width: 100%;
                     height: 100%;
-                    background: $tileCell;
+                    background: var(--tileCell);
                     border-radius: 3px;
                     @include flex(center, center);
                     overflow: hidden;
@@ -148,5 +172,74 @@ html, body {
                 }
             }
         }
+    }
+}
+
+.settings-div {
+    @include flex(flex-start, center, column);
+    .save-settings {
+        width: 80px;
+        height: 40px;
+        margin: 5px 0;
+        border: 1px solid rgb(204, 201, 201);
+        border-radius: 4px;
+        background: #00575f;
+        color: #fff;
+        font-size: 17px;
+        outline: none;
+    }
+    .settings-panel {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    
+        .panels {
+            width: 100%;
+            @include flex(flex-start, center, column);
+            background: $white;
+            padding-top: 10px;
+            border-top: 1px solid rgb(204, 201, 201);
+            
+            .panel-name {
+                @include flex(center, center);
+                border-bottom: 1px solid rgb(204, 201, 201);
+                width: 100%;
+            }
+    
+            .size-option, .theme-option {
+                width: 100%;
+                @include flex();
+                padding: 7px 10px;
+                font-size: 15px;
+    
+                .check-box-size, .check-box-theme {
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    border: 2px solid #000;
+                    margin-right: 10px;
+                    position: relative;
+                }
+            }
+        }
+    
+        .theme {
+            // background: #000;
+            border-right: 1px solid rgb(204, 201, 201);
+        }
+    }
+}
+
+.option-selected {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background: #00575f;
+        border-radius: 50%;
+
     }
 }

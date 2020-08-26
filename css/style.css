@@ -12,14 +12,20 @@ html, body {
 }
 
 .game-container {
+  --topColor: #1b1b1b;
+  --gameBgColor: #444;
+  --tileCell: #373737;
+  --primCol: #000;
+  --pad: #00ffbf;
   width: 100%;
   height: 100%;
+  display: none;
 }
 
 .game-container .top {
   width: 100%;
   height: 12%;
-  background: #1b1b1b;
+  background: var(--topColor);
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,7 +79,7 @@ html, body {
 }
 
 .game-container .top .content-div .logo-div .tag .pad {
-  color: #00ffbf;
+  color: var(--pad);
 }
 
 .game-container .top .content-div .actions-div {
@@ -91,12 +97,12 @@ html, body {
 .game-container .game-body {
   width: 100%;
   height: 88%;
-  background: #444;
+  background: var(--gameBgColor);
 }
 
 .game-container .game-body .score-div {
   width: 100%;
-  height: 70px;
+  height: 17%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,7 +128,7 @@ html, body {
   border-radius: 5px;
   width: 80px;
   height: 50px;
-  background: #000;
+  background: var(--primCol);
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -165,7 +171,7 @@ html, body {
   --font: calc(92px / 2);
   width: 300px;
   height: 300px;
-  background: #000;
+  background: var(--primCol);
   border-radius: 3px;
   display: -ms-grid;
   display: grid;
@@ -180,7 +186,7 @@ html, body {
 .game-container .game-body .tile-board-div .tile-board .tile-cell {
   width: 100%;
   height: 100%;
-  background: #373737;
+  background: var(--tileCell);
   border-radius: 3px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -210,5 +216,108 @@ html, body {
   font-size: var(--font);
   font-weight: bold;
   color: #fff;
+}
+
+.settings-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.settings-div .save-settings {
+  width: 80px;
+  height: 40px;
+  margin: 5px 0;
+  border: 1px solid #ccc9c9;
+  border-radius: 4px;
+  background: #00575f;
+  color: #fff;
+  font-size: 17px;
+  outline: none;
+}
+
+.settings-div .settings-panel {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.settings-div .settings-panel .panels {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #fff;
+  padding-top: 10px;
+  border-top: 1px solid #ccc9c9;
+}
+
+.settings-div .settings-panel .panels .panel-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ccc9c9;
+  width: 100%;
+}
+
+.settings-div .settings-panel .panels .size-option, .settings-div .settings-panel .panels .theme-option {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 7px 10px;
+  font-size: 15px;
+}
+
+.settings-div .settings-panel .panels .size-option .check-box-size, .settings-div .settings-panel .panels .size-option .check-box-theme, .settings-div .settings-panel .panels .theme-option .check-box-size, .settings-div .settings-panel .panels .theme-option .check-box-theme {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  margin-right: 10px;
+  position: relative;
+}
+
+.settings-div .settings-panel .theme {
+  border-right: 1px solid #ccc9c9;
+}
+
+.option-selected::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #00575f;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=style.css.map */
