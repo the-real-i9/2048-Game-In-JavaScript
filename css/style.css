@@ -19,7 +19,6 @@ html, body {
   --pad: #00ffbf;
   width: 100%;
   height: 100%;
-  display: none;
 }
 
 .game-container .top {
@@ -115,18 +114,19 @@ html, body {
 }
 
 .game-container .game-body .score-div .score-cont {
-  width: 60%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .game-container .game-body .score-div .score-cont .score-box {
   border-radius: 5px;
-  width: 80px;
+  padding: 0 10px;
+  margin: 0 5px;
   height: 50px;
   background: var(--primCol);
   color: #fff;
@@ -166,11 +166,12 @@ html, body {
 }
 
 .game-container .game-body .tile-board-div .tile-board {
+  --screenSize: 300px;
   --grid: 3;
   --padGap: 6px;
-  --font: calc(92px / 2);
-  width: 300px;
-  height: 300px;
+  --font: 92px;
+  width: var(--screenSize);
+  height: var(--screenSize);
   background: var(--primCol);
   border-radius: 3px;
   display: -ms-grid;
@@ -187,7 +188,7 @@ html, body {
   width: 100%;
   height: 100%;
   background: var(--tileCell);
-  border-radius: 3px;
+  border-radius: 2px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -197,7 +198,7 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .game-container .game-body .tile-board-div .tile-board .tile-cell .tile {
@@ -212,8 +213,7 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: purple;
-  font-size: var(--font);
+  font-size: calc(var(--font) / 2.5);
   font-weight: bold;
   color: #fff;
 }
@@ -232,6 +232,7 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  display: none;
 }
 
 .settings-div .save-settings {
@@ -319,5 +320,73 @@ html, body {
   bottom: 2px;
   background: #00575f;
   border-radius: 50%;
+}
+
+.tile-2 {
+  background: #8c00da;
+}
+
+.tile-4 {
+  background: #ed124b;
+}
+
+.tile-8 {
+  background: #f28c0d;
+}
+
+.tile-16 {
+  background: #00950d;
+}
+
+.tile-32 {
+  background: #00575f;
+}
+
+.tile-64 {
+  background: #f60023;
+}
+
+.tile-128 {
+  background: #ed450b;
+}
+
+.tile-256 {
+  background: #2ecc48;
+}
+
+.tile-512 {
+  background: #521750;
+}
+
+.tile-1024 {
+  background: aqua;
+}
+
+.tile-2048 {
+  background: brown;
+}
+
+.tile-4096 {
+  background: magenta;
+}
+
+.tile-8192 {
+  background: salmon;
+}
+
+.tile-16384 {
+  background: orangered;
+}
+
+.tile-32768 {
+  background: yellowgreen;
+}
+
+.tile-65536 {
+  background: teal;
+}
+
+.tile-131072 {
+  background: blueviolet;
 }
 /*# sourceMappingURL=style.css.map */
