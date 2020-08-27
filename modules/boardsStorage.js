@@ -2,4 +2,13 @@
 // High score current score
 const boardsDatabase = new Map();
 
-export default boardsDatabase;
+const storeBoard = (key, value) => {
+    boardsDatabase.set(key, value);
+    return true;
+};
+
+
+export {
+    boardsDatabase,
+    storeBoard,
+};

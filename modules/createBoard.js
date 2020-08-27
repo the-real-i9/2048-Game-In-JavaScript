@@ -1,3 +1,5 @@
+import { storeBoard } from './boardsStorage.js';
+
 // Board size object
 // Props:
     // current Board state
@@ -29,11 +31,50 @@ const createBoard = (boardSize) => {
     const size = Number(boardSize.slice(-1));
     const board = {
         dimen: `${size}x${size}`,
-        currentBoardState: getBoardString(size),
-        previousBoardState: null,
+        currBoardState: getBoardString(size),
+        prevBoardState: null,
         screenSize: `${String(window.screen.width)[0]}00px`,
         padGap: getPadGap(size),
+        grid: size,
+        currScore: 0,
+        hScore: 0,
+
+        set currentBoardState(boardHtml) {
+            this.currBoardState = boardHtml;
+        },
+
+        get currentBoardState() {
+            return this.currBoardState;
+        },
+
+        set previousBoardState(cbs) {
+            this.prevBoardState = cbs;
+        },
+
+        get previousBoardState() {
+            return this.prevBoardState;
+        },
+
+        set currentScore(score) {
+            this.currScore = score;
+        },
+
+        get currentScore() {
+            return this.currScore;
+        },
+
+        set highScore(score) {
+            this.hScore = score;
+        },
+
+        get highScore() {
+            return this.hScore;
+        },
+
     };
+    if (storeBoard(boardSize, board)) return true;
+
+    return false;
 };
 
 export default createBoard;

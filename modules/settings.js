@@ -12,6 +12,7 @@ import {
     setCurrentTheme,
 } from './currents.js';
 import renderTheme from './setTheme.js';
+import renderBoard from './boardRender.js';
 import themes from './themes.js';
 const {
     settingsContainer,
@@ -57,7 +58,10 @@ const saveSettings = () => {
         setCurrentTheme(selectedThemeID);
     }
 
-    setCurrentBoardSize(selectedBoardSizeID);
+    if (selectedBoardSizeID !== currentBoardSizeID) {
+        renderBoard(selectedBoardSizeID);
+        setCurrentBoardSize(selectedBoardSizeID);
+    }
 };
 
 export {
