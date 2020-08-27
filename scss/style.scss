@@ -212,7 +212,7 @@ html, body {
     }
 }
 
-.option-selected {
+.size-option-selected, .theme-option-selected {
     &::before {
         content: '';
         position: absolute;

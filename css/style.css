@@ -310,7 +310,7 @@ html, body {
   border-right: 1px solid #ccc9c9;
 }
 
-.option-selected::before {
+.size-option-selected::before, .theme-option-selected::before {
   content: '';
   position: absolute;
   top: 2px;
