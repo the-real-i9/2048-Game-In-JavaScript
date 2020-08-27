@@ -15,12 +15,16 @@ const renderBoardInUI = ({
     grid,
     currentScore,
     highScore,
+    fontSize,
 }) => {
     setProp(scoreValue, 'textContent', currentScore);
     setProp(highScoreValue, 'textContent', highScore);
     tileBoard.style.setProperty('--screenSize', screenSize);
     tileBoard.style.setProperty('--padGap', padGap);
     tileBoard.style.setProperty('--grid', grid);
+    if (fontSize) {
+        tileBoard.style.setProperty('--font', `${fontSize}px`);
+    }
     setProp(tileBoard, 'innerHTML', currentBoardState);
 
     /* return new Promise((resolve) => {
@@ -36,7 +40,7 @@ const renderBoard = (boardSize) => {
     if (!boardsDatabase.has(boardSize)) {
         if (createBoard(boardSize)) {
             if (renderBoardInUI(boardsDatabase.get(boardSize))) {
-                initTiles();
+                initTiles(boardSize);
                 return;
             }
         }

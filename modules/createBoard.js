@@ -28,7 +28,7 @@ const getPadGap = (size) => {
 };
 
 const createBoard = (boardSize) => {
-    const size = Number(boardSize.slice(-1));
+    const size = Number(boardSize.slice(boardSize.indexOf('-') + 1));
     const board = {
         dimen: `${size}x${size}`,
         currBoardState: getBoardString(size),
@@ -38,6 +38,15 @@ const createBoard = (boardSize) => {
         grid: size,
         currScore: 0,
         hScore: 0,
+        fSize: 0,
+
+        set fontSize(fnsize) {
+            this.fSize = fnsize;
+        },
+
+        get fontSize() {
+            return this.fSize;
+        },
 
         set currentBoardState(boardHtml) {
             this.currBoardState = boardHtml;
