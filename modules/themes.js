@@ -118,5 +118,23 @@ const themeDarkYellow = {
 };
 
 const themeDatabase = new Map([
-    ['neon'],
+    ['theme-neon', themeNeon],
+    ['theme-light-blue', themeLightBlue],
+    ['theme-light-pink', themeLightPink],
+    ['theme-light-purple', themeLightPurple],
+    ['theme-light-cyan', themeLightCyan],
+    ['theme-light-green', themeLightGreen],
+    ['theme-light-gray', themeLightGray],
+    ['theme-light-orange', themeLightOrange],
+    ['theme-light-yellow', themeLightYellow],
+    ['theme-dark-blue', themeDarkBlue],
+    ['theme-dark-pink', themeDarkPink],
+    ['theme-dark-purple', themeDarkPurple],
+    ['theme-dark-cyan', themeDarkCyan],
+    ['theme-dark-green', themeDarkGreen],
+    ['theme-dark-gray', themeDarkGray],
+    ['theme-dark-orange', themeDarkOrange],
+    ['theme-dark-yellow', themeDarkYellow],
 ]);
+
+export default themeDatabase;

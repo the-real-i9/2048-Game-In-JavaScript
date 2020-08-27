@@ -5,8 +5,8 @@ import { setCurrentTheme, setCurrentBoardSize } from './currents.js';
 const { checkBoxSize4, checkBoxThemeNeon } = DOMElems;
 
 const settings = () => {
-    setCurrentTheme(checkBoxThemeNeon);
-    setCurrentBoardSize(checkBoxSize4);
+    setCurrentTheme(checkBoxThemeNeon.id);
+    setCurrentBoardSize(checkBoxSize4.id);
 };
 
 settings();

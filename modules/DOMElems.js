@@ -8,6 +8,7 @@ const DOMElems = {
     checkBoxTheme: selectAll('.check-box-theme'),
     checkBoxSize4: select('#size-4'),
     checkBoxThemeNeon: select('#theme-neon'),
+    saveSettingsBtn: select('.save-settings'),
 };
 
 export default DOMElems;

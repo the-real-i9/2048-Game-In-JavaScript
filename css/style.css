@@ -147,11 +147,12 @@ html, body {
 
 .game-container .game-body .score-div .score-cont .score-box .sc-txt {
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .game-container .game-body .score-div .score-cont .score-box .sc-num {
   font-size: 23px;
+  font-weight: 500;
   line-height: 27px;
 }
 
@@ -198,6 +199,7 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
 }
 
 .game-container .game-body .tile-board-div .tile-board .tile-cell .tile {

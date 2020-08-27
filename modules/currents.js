@@ -2,12 +2,12 @@
 let currentTheme = null;
 let currentBoardSize = null;
 
-const setCurrentTheme = (theme) => {
-    currentTheme = theme;
+const setCurrentTheme = (themeId) => {
+    currentTheme = themeId;
 };
 
-const setCurrentBoardSize = (boardSize) => {
-    currentBoardSize = boardSize;
+const setCurrentBoardSize = (boardSizeId) => {
+    currentBoardSize = boardSizeId;
 };
 
 
