@@ -140,7 +140,7 @@ html, body {
                     background: var(--tileCell);
                     border-radius: 2px;
                     @include flex(center, center);
-                    overflow: scroll;
+                    // overflow: scroll;
                     
                     .tile {
                         width: 100%;
