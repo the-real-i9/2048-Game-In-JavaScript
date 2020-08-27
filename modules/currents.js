@@ -1,19 +1,19 @@
 /* eslint-disable import/no-mutable-exports */
-let currentTheme = null;
-let currentBoardSize = null;
+let currentThemeID = null;
+let currentBoardSizeID = null;
 
 const setCurrentTheme = (themeId) => {
-    currentTheme = themeId;
+    currentThemeID = themeId;
 };
 
 const setCurrentBoardSize = (boardSizeId) => {
-    currentBoardSize = boardSizeId;
+    currentBoardSizeID = boardSizeId;
 };
 
 
 export {
     setCurrentBoardSize,
     setCurrentTheme,
-    currentTheme,
-    currentBoardSize,
+    currentThemeID,
+    currentBoardSizeID,
 };

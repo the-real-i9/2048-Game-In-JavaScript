@@ -12,10 +12,6 @@ html, body {
 }
 
 .game-container {
-  --topColor: #1b1b1b;
-  --gameBgColor: #444;
-  --tileCell: #373737;
-  --primCol: #000;
   --pad: #00ffbf;
   width: 100%;
   height: 100%;

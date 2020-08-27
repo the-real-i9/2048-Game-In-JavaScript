@@ -6,8 +6,10 @@ import {
     select,
 } from './manipFuncs.js';
 import {
-    currentBoardSize,
-    currentTheme,
+    currentBoardSizeID,
+    currentThemeID,
+    setCurrentBoardSize,
+    setCurrentTheme,
 } from './currents.js';
 import renderTheme from './setTheme.js';
 import themes from './themes.js';
@@ -17,8 +19,8 @@ const {
     checkBoxSize,
     checkBoxTheme,
 } = DOMElems;
-classAction(select(`#${currentBoardSize}`), 'add', 'size-option-selected');
-classAction(select(`#${currentTheme}`), 'add', 'theme-option-selected');
+classAction(select(`#${currentBoardSizeID}`), 'add', 'size-option-selected');
+classAction(select(`#${currentThemeID}`), 'add', 'theme-option-selected');
 const switchToSettings = () => {
     // hide game
     setStyle(gameContainer, 'display', 'none');
@@ -50,7 +52,12 @@ const saveSettings = () => {
     const selectedThemeID = [...checkBoxTheme].find((elem) => elem.classList.contains('theme-option-selected')).id;
     const selectedBoardSizeID = [...checkBoxSize].find((elem) => elem.classList.contains('size-option-selected')).id;
 
-    renderTheme(themes.get(selectedThemeID));
+    if (selectedThemeID !== currentThemeID) {
+        renderTheme(themes.get(selectedThemeID));
+        setCurrentTheme(selectedThemeID);
+    }
+
+    setCurrentBoardSize(selectedBoardSizeID);
 };
 
 export {
