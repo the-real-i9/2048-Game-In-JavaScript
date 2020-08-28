@@ -18,7 +18,7 @@ const initTiles = (boardSize) => {
     const fontSize = select('.tile-cell').getBoundingClientRect().width;
     tileBoard.style.setProperty('--font', `${fontSize}px`);
 
-    updateBoardObject(boardSize, tileBoard.innerHTML, Number(scoreValue.textContent), Number(highScoreValue.textContent), fontSize);
+    updateBoardObject(boardSize, tileBoard.innerHTML, scoreValue.textContent, highScoreValue.textContent, fontSize);
 };
 
 export default initTiles;

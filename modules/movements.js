@@ -23,8 +23,7 @@ const moveToExtreme = (tileRowCol, dir) => {
         setProp(currCell, 'innerHTML', '');
         movementOcurred = true;
     } else if (nextOrPrevCell.innerHTML) {
-        if (!currCell.innerHTML) return;
-        const re = />(\d)<\//;
+        const re = />(\d+)<\//;
         const nextOrPrevCellText = nextOrPrevCell.innerHTML.match(re)[1];
         const currCellText = currCell.innerHTML.match(re)[1];
         if (nextOrPrevCellText === currCellText) {
