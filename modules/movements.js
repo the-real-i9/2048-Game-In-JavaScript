@@ -9,7 +9,7 @@ const moveToExtreme = (tileRowCol, dir) => {
     const allTileCells = [...selectAll('.tile-cell')];
     const isNegDir = dir === 'left' || dir === 'up';
     const hrORVt = (dir === 'left' || dir === 'right') ? 'hr' : 'vt';
-    const minMax = isNegDir ? 0 : max - 1;
+    const minMax = isNegDir ? 0 : max;
     const addOrDiff = isNegDir ? -1 : 1;
     if (cellIndex === minMax) return;
     const currTileCell = allTileCells
@@ -23,6 +23,7 @@ const moveToExtreme = (tileRowCol, dir) => {
         setProp(currCell, 'innerHTML', '');
         movementOcurred = true;
     } else if (nextOrPrevCell.innerHTML) {
+        if (!currCell.innerHTML) return;
         const re = />(\d)<\//;
         const nextOrPrevCellText = nextOrPrevCell.innerHTML.match(re)[1];
         const currCellText = currCell.innerHTML.match(re)[1];
@@ -69,11 +70,10 @@ const moveRight = (boardSize) => {
     const parent = allTilesElem.map((elem) => elem.parentElement);
     const rowHrCell = parent.map((elem) => [[...elem.classList][1], [...elem.classList][2]]);
 
-    max = boardSize;
-
-    for (const elem of rowHrCell) {
-        const row = elem[0];
-        const hrCell = elem[1];
+    for (let elem = rowHrCell.length - 1; elem > -1; elem--) {
+        const row = rowHrCell[elem][0];
+        const hrCell = rowHrCell[elem][1];
+        max = boardSize - 1;
         cellIndex = grabNum(hrCell);
         moveToExtreme(row, 'right');
     }
@@ -89,7 +89,6 @@ const moveUp = () => {
     const allTilesElem = [...selectAll('.tile')];
     const parent = allTilesElem.map((elem) => elem.parentElement);
     const colVtCell = parent.map((elem) => [[...elem.classList][3], [...elem.classList][4]]);
-    console.log(colVtCell);
 
     for (const elem of colVtCell) {
         const col = elem[0];
@@ -110,14 +109,14 @@ const moveDown = (boardSize) => {
     const parent = allTilesElem.map((elem) => elem.parentElement);
     const colVtCell = parent.map((elem) => [[...elem.classList][3], [...elem.classList][4]]);
 
-    max = boardSize;
-
-    for (const elem of colVtCell) {
-        const col = elem[0];
-        const vtCell = elem[1];
+    for (let elem = colVtCell.length - 1; elem > -1; elem--) {
+        const col = colVtCell[elem][0];
+        const vtCell = colVtCell[elem][1];
+        max = boardSize - 1;
         cellIndex = grabNum(vtCell);
         moveToExtreme(col, 'down');
     }
+
 
     if (movementOcurred) {
         movementOcurred = false;
