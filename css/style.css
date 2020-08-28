@@ -12,6 +12,7 @@ html, body {
 }
 
 .game-container {
+  position: relative;
   --pad: #00ffbf;
   width: 100%;
   height: 100%;
@@ -31,6 +32,7 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .game-container .top .content-div {
@@ -87,6 +89,13 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.game-container .top::after {
+  content: var(--content);
+  position: absolute;
+  width: 100%;
+  height: 50px;
 }
 
 .game-container .game-body {
@@ -213,6 +222,48 @@ html, body {
   font-size: calc(var(--font) / 2.5);
   font-weight: bold;
   color: #fff;
+}
+
+.game-container .modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 200px;
+  height: 100px;
+  background: #fff;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: none;
+}
+
+.game-container .modals .modal-txt {
+  font-size: 17px;
+}
+
+.game-container .modals .modal-actions button {
+  width: 75px;
+  height: 35.5px;
+  margin: 5px 0;
+  border: 1px solid #ccc9c9;
+  border-radius: 4px;
+  background: #00575f;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
 }
 
 .settings-div {

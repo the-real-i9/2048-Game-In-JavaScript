@@ -21,6 +21,7 @@ html, body {
 }
 
 .game-container {
+    position: relative;
     // --topColor: #1b1b1b;
     // --gameBgColor: #444;
     // --tileCell: #373737;
@@ -29,11 +30,13 @@ html, body {
     width: 100%;
     height: 100%;
     .top {
+        // --content: '';
         width: 100%;
         height: 12%;
         background: var(--topColor);
         color: $white;
         @include flex(center, center);
+        position: relative;
 
         .content-div {
             width: 90%;
@@ -66,6 +69,13 @@ html, body {
                 width: 40%;
                 @include flex(space-around, center);
             }
+        }
+
+        &::after {
+            content: var(--content);
+            position: absolute;
+            width: 100%;
+            height: 50px;
         }
     }
 
@@ -152,6 +162,37 @@ html, body {
                         color: $white;
                     }
                 }
+            }
+        }
+    }
+
+    .modals {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 100px;
+        background: $white;
+        border-radius: 5px;
+        @include flex(center, center, column);
+        display: none;
+
+        .modal-txt {
+            font-size: 17px;
+        }
+
+        .modal-actions {
+            button {
+                width: 75px;
+                height: 35.5px;
+                margin: 5px 0;
+                border: 1px solid rgb(204, 201, 201);
+                border-radius: 4px;
+                background: #00575f;
+                color: #fff;
+                font-size: 13px;
+                outline: none;
             }
         }
     }

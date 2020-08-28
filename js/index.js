@@ -15,9 +15,15 @@ import {
     moveDown,
 } from '../modules/movements.js';
 
+import { currentBoardSizeID } from '../modules/currents.js';
+
+import { restartGame } from '../modules/gameFuncs.js';
+
 const {
     settingsBtn,
     saveSettingsBtn,
+    undoGameBtn,
+    restartGameBtn,
 } = DOMElems;
 
 event(settingsBtn, 'click', switchToSettings);
@@ -33,4 +39,8 @@ event(document, 'keyup', (ev) => {
     } else if (ev.keyCode === 40) {
         playGame(moveDown);
     }
+});
+
+event(restartGameBtn, 'click', () => {
+    restartGame(currentBoardSizeID);
 });

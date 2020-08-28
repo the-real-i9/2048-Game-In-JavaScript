@@ -12,6 +12,8 @@ const DOMElems = {
     tileBoard: select('.tile-board'),
     scoreValue: select('#score-value'),
     highScoreValue: select('#high-score-value'),
+    restartGameBtn: select('.restart'),
+    undoGameBtn: select('.undo'),
 };
 
 export default DOMElems;

@@ -1,5 +1,6 @@
 import DOMElems from './DOMElems.js';
 import { setProp, selectAll } from './manipFuncs.js';
+import initTiles from './initTiles.js';
 const { scoreValue, highScoreValue } = DOMElems;
 
 const grabNum = (str) => Number(str.slice(str.lastIndexOf('-') + 1));
@@ -27,9 +28,33 @@ const generateNewTile = () => {
     setProp(randomEmptyTileCell, 'innerHTML', `<div class="tile tile-${tile}">${tile}</div>`);
 };
 
+const declareWin = () => {
+
+};
+
+const checkGameOver = () => {
+
+};
+
+const declareGameOver = () => {
+
+};
+
+const undoGame = (boardSize) => {
+
+};
+
+const restartGame = (boardSize) => {
+    [...selectAll('.tile-cell')].map((elem) => setProp(elem, 'innerHTML', ''));
+    initTiles(boardSize);
+};
 
 export {
     updateScores,
     grabNum,
     generateNewTile,
+    declareWin,
+    checkGameOver,
+    declareGameOver,
+    restartGame,
 };

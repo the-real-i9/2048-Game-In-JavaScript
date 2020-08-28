@@ -1,5 +1,5 @@
 import { selectAll, setProp } from './manipFuncs.js';
-import { grabNum, updateScores } from './gameFuncs.js';
+import { grabNum, updateScores, declareWin } from './gameFuncs.js';
 let cellIndex = null;
 let max = null;
 
