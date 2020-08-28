@@ -1,4 +1,5 @@
 import { storeBoard } from './boardsStorage.js';
+import { grabNum } from './gameFuncs.js';
 
 // Board size object
 // Props:
@@ -14,7 +15,7 @@ const getBoardString = (size) => {
     let boardString = '';
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
-            boardString += `<div class="tile-cell hr-row-${i}-cell-${j} vt-col-${j}-cell-${i}"></div>`;
+            boardString += `<div class="tile-cell row-${i} hr-cell-${j} col-${j} vt-cell-${i}"></div>`;
         }
     }
     return boardString;
@@ -28,7 +29,7 @@ const getPadGap = (size) => {
 };
 
 const createBoard = (boardSize) => {
-    const size = Number(boardSize.slice(boardSize.indexOf('-') + 1));
+    const size = grabNum(boardSize);
     const board = {
         dimen: `${size}x${size}`,
         currBoardState: getBoardString(size),
@@ -41,7 +42,9 @@ const createBoard = (boardSize) => {
         fSize: 0,
 
         set fontSize(fnsize) {
-            this.fSize = fnsize;
+            if (fnsize) {
+                this.fSize = fnsize;
+            }
         },
 
         get fontSize() {
