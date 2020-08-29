@@ -39,6 +39,8 @@ const {
     cancelBtn,
     continueGameBtn,
     newGameBtn,
+    undoGameOverBtn,
+    restartGameOverBtn,
 } = DOMElems;
 
 event(settingsBtn, 'click', switchToSettings);
@@ -74,5 +76,13 @@ event(undoGameBtn, 'click', () => {
 
 event(continueGameBtn, 'click', terminateAction);
 event(newGameBtn, 'click', () => {
+    restartGame(currentBoardSizeID);
+});
+
+event(undoGameOverBtn, 'click', () => {
+    undoGame(currentBoardSizeID);
+});
+
+event(restartGameOverBtn, 'click', () => {
     restartGame(currentBoardSizeID);
 });

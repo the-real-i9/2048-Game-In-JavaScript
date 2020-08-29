@@ -20,6 +20,8 @@ const DOMElems = {
     restartGameBtn: select('#click-restart'),
     newGameBtn: select('#newgame'),
     continueGameBtn: select('#continue'),
+    undoGameOverBtn: select('#undo-gameover'),
+    restartGameOverBtn: select('#gameover-restart'),
 };
 
 export default DOMElems;

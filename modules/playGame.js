@@ -3,6 +3,8 @@ import {
 } from './currents.js';
 import {
     generateNewTile,
+    checkGameOver,
+    declareGameOver,
 } from './gameFuncs.js';
 
 import { grabNum } from './handyFuncs.js';
@@ -29,6 +31,9 @@ const playGame = (move) => {
             score: scoreValue.textContent,
             highScore: highScoreValue.textContent,
         });
+        if (checkGameOver(boardSize)) {
+            declareGameOver();
+        }
     }
 };
 

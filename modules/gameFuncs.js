@@ -39,18 +39,49 @@ const generateNewTile = () => {
     setProp(randomEmptyTileCell, 'innerHTML', `<div class="tile tile-${tile}">${tile}</div>`);
 };
 
-const checkGameOver = () => {
+const checkGameOver = (boardSizeNum) => {
+    const allTileCells = selectAll('.tile-cell');
+    const boardFilled = [...allTileCells].every((elem) => elem.innerHTML);
+    const re = />(\d+)<\//;
+    if (boardFilled) {
+        const rowNums = [];
+        const colNums = [];
+        for (let r = 0; r < boardSizeNum; r++) {
+            const rowTileNum = [...allTileCells]
+                .filter((elem) => elem.classList.contains(`row-${r}`))
+                .map((elem) => Number(elem.innerHTML.match(re)[1]));
+            rowNums.push(rowTileNum);
+        }
 
-};
+        for (let c = 0; c < boardSizeNum; c++) {
+            const colTileNum = [...allTileCells]
+                .filter((elem) => elem.classList.contains(`col-${c}`))
+                .map((elem) => Number(elem.innerHTML.match(re)[1]));
+            colNums.push(colTileNum);
+        }
 
-const declareGameOver = () => {
+        for (const el of rowNums) {
+            for (let i = 0; i < el.length; i++) {
+                if (i > 0 && el[i] === el[i - 1]) return false;
+            }
+        }
 
+        for (const el of colNums) {
+            for (let i = 0; i < el.length; i++) {
+                if (i > 0 && el[i] === el[i - 1]) return false;
+            }
+        }
+        return true;
+    }
+
+    return false;
 };
 
 const undoGame = (boardSize) => {
     const boardObject = boardsDatabase.get(boardSize);
     if (boardObject.previousBoardState === boardObject.currentBoardState) {
-        console.log("You can't undo twice");
+        // console.log("You can't undo twice");
+        // show pop up here
         return;
     }
 
@@ -58,6 +89,7 @@ const undoGame = (boardSize) => {
         undoBoardObject(boardSize);
         renderBoard(boardSize);
     }
+    [...modals].map((elem) => setStyle(elem, 'display', 'none'));
 };
 
 const restartGame = (boardSize) => {
@@ -95,6 +127,10 @@ const terminateAction = () => {
 
 const declareWin = () => {
     displayModal('continue-newgame');
+};
+
+const declareGameOver = () => {
+    displayModal('undo-restart');
 };
 
 export {
