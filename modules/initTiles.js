@@ -11,7 +11,7 @@ const initTileCells = (tile) => {
 };
 
 const initTiles = (boardSize) => {
-    const tiles = [2, 4];
+    const tiles = [2, 2, 2, 2, 2, 4];
     initTileCells(tiles[Math.trunc(Math.random() * tiles.length)]);
     initTileCells(tiles[Math.trunc(Math.random() * tiles.length)]);
 

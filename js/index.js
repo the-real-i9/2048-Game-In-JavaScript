@@ -15,32 +15,49 @@ import {
     moveDown,
 } from '../modules/movements.js';
 
-import { currentBoardSizeID } from '../modules/currents.js';
+import {
+    currentBoardSizeID,
+} from '../modules/currents.js';
 
-import { restartGame } from '../modules/gameFuncs.js';
+import {
+    restartGame,
+    noAlert,
+    displayModal,
+    terminateAction,
+} from '../modules/gameFuncs.js';
 
 const {
     settingsBtn,
     saveSettingsBtn,
     undoGameBtn,
     restartGameBtn,
+    restartModalBtn,
+    cancelBtn,
 } = DOMElems;
 
 event(settingsBtn, 'click', switchToSettings);
 event(saveSettingsBtn, 'click', saveSettings);
 
 event(document, 'keyup', (ev) => {
-    if (ev.keyCode === 37) {
-        playGame(moveLeft);
-    } else if (ev.keyCode === 38) {
-        playGame(moveUp);
-    } else if (ev.keyCode === 39) {
-        playGame(moveRight);
-    } else if (ev.keyCode === 40) {
-        playGame(moveDown);
+    if (noAlert()) {
+        if (ev.keyCode === 37) {
+            playGame(moveLeft);
+        } else if (ev.keyCode === 38) {
+            playGame(moveUp);
+        } else if (ev.keyCode === 39) {
+            playGame(moveRight);
+        } else if (ev.keyCode === 40) {
+            playGame(moveDown);
+        }
     }
+});
+
+event(restartModalBtn, 'click', () => {
+    displayModal('restart-cancel');
 });
 
 event(restartGameBtn, 'click', () => {
     restartGame(currentBoardSizeID);
 });
+
+event(cancelBtn, 'click', terminateAction);

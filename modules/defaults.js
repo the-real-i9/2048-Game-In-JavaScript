@@ -1,11 +1,11 @@
 // If no local storage yet
-import { classAction } from './manipFuncs.js';
+import { setStyle } from './manipFuncs.js';
 import DOMElems from './DOMElems.js';
 import renderTheme from './setTheme.js';
 import renderBoard from './boardRender.js';
 import themes from './themes.js';
 import { setCurrentTheme, setCurrentBoardSize } from './currents.js';
-const { checkBoxSize4, checkBoxThemeNeon } = DOMElems;
+const { checkBoxSize4, checkBoxThemeNeon, modals } = DOMElems;
 
 const settings = () => {
     setCurrentTheme(checkBoxThemeNeon.id);
@@ -16,3 +16,5 @@ const settings = () => {
 };
 
 settings();
+
+[...modals].map((elem) => setStyle(elem, 'display', 'none'));

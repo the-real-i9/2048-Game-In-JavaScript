@@ -5,6 +5,7 @@ import {
     grabNum,
     generateNewTile,
 } from './gameFuncs.js';
+
 import updateBoardObject from './updateBoardObject.js';
 import DOMElems from './DOMElems.js';
 const {

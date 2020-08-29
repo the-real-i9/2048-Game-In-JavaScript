@@ -12,12 +12,10 @@ const moveToExtreme = (tileRowCol, dir) => {
     const minMax = isNegDir ? 0 : max;
     const addOrDiff = isNegDir ? -1 : 1;
     if (cellIndex === minMax) return;
-    const currTileCell = allTileCells
-        .filter((elem) => elem.classList.contains(tileRowCol) && elem.classList.contains(`${hrORVt}-cell-${cellIndex}`));
-    const nextOrPrevTileCell = allTileCells
-        .filter((elem) => elem.classList.contains(tileRowCol) && elem.classList.contains(`${hrORVt}-cell-${cellIndex + addOrDiff}`));
-    const nextOrPrevCell = nextOrPrevTileCell[0];
-    const currCell = currTileCell[0];
+    const currCell = allTileCells
+        .find((elem) => elem.classList.contains(tileRowCol) && elem.classList.contains(`${hrORVt}-cell-${cellIndex}`));
+    const nextOrPrevCell = allTileCells
+        .find((elem) => elem.classList.contains(tileRowCol) && elem.classList.contains(`${hrORVt}-cell-${cellIndex + addOrDiff}`));
     if (nextOrPrevCell.innerHTML === '') {
         setProp(nextOrPrevCell, 'innerHTML', currCell.innerHTML);
         setProp(currCell, 'innerHTML', '');
