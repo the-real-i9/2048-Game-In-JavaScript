@@ -27,11 +27,6 @@ const renderBoardInUI = ({
     }
     setProp(tileBoard, 'innerHTML', currentBoardState);
 
-    /* return new Promise((resolve) => {
-        setProp(tileBoard, 'innerHTML', currentBoardState);
-
-        resolve(selectAll('.tileCell'));
-    }); */
     return true;
 };
 

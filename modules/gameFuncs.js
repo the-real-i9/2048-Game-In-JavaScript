@@ -5,6 +5,9 @@ import {
     setStyle,
 } from './manipFuncs.js';
 import initTiles from './initTiles.js';
+import { updatePreviousBoardObject, undoBoardObject } from './updateBoardObject.js';
+import { boardsDatabase } from './boardsStorage.js';
+import renderBoard from './boardRender.js';
 const {
     scoreValue,
     highScoreValue,
@@ -12,7 +15,6 @@ const {
     modals,
 } = DOMElems;
 
-const grabNum = (str) => Number(str.slice(str.lastIndexOf('-') + 1));
 
 const updateScores = (score) => {
     const currScore = Number(scoreValue.textContent);
@@ -50,13 +52,28 @@ const declareGameOver = () => {
 };
 
 const undoGame = (boardSize) => {
+    const boardObject = boardsDatabase.get(boardSize);
+    if (boardObject.previousBoardState === boardObject.currentBoardState) {
+        console.log("You can't undo twice");
+        return;
+    }
 
+    if (boardObject.previousBoardState) {
+        undoBoardObject(boardSize);
+        renderBoard(boardSize);
+    }
 };
 
 const restartGame = (boardSize) => {
     [...selectAll('.tile-cell')].map((elem) => setProp(elem, 'innerHTML', ''));
     setProp(scoreValue, 'textContent', 0);
     initTiles(boardSize);
+    updatePreviousBoardObject({
+        boardSize,
+        boardState: null,
+        currentScore: null,
+        highScore: null,
+    });
     [...modals].map((elem) => setStyle(elem, 'display', 'none'));
 };
 
@@ -80,20 +97,14 @@ const terminateAction = () => {
     [...modals].map((elem) => setStyle(elem, 'display', 'none'));
 };
 
-const noAlert = () => {
-    const isThereNoAlert = [...modals].every((elem) => elem.style.display === 'none');
-    return isThereNoAlert;
-};
-
 export {
     updateScores,
-    grabNum,
     generateNewTile,
     declareWin,
     checkGameOver,
     declareGameOver,
     restartGame,
-    noAlert,
     displayModal,
     terminateAction,
+    undoGame,
 };

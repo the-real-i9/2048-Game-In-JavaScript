@@ -1,7 +1,17 @@
-import { selectAll, setProp, select } from './manipFuncs.js';
-import updateBoardObject from './updateBoardObject.js';
+import {
+    selectAll,
+    setProp,
+    select,
+} from './manipFuncs.js';
+import {
+    updateBoardObject, updatePreviousBoardObject,
+} from './updateBoardObject.js';
 import DOMElems from './DOMElems.js';
-const { tileBoard, scoreValue, highScoreValue } = DOMElems;
+const {
+    tileBoard,
+    scoreValue,
+    highScoreValue,
+} = DOMElems;
 
 const initTileCells = (tile) => {
     const allTileCells = selectAll('.tile-cell');
@@ -18,7 +28,19 @@ const initTiles = (boardSize) => {
     const fontSize = select('.tile-cell').getBoundingClientRect().width;
     tileBoard.style.setProperty('--font', `${fontSize}px`);
 
-    updateBoardObject(boardSize, tileBoard.innerHTML, scoreValue.textContent, highScoreValue.textContent, fontSize);
+    updateBoardObject({
+        boardSize,
+        boardState: tileBoard.innerHTML,
+        score: scoreValue.textContent,
+        highScore: highScoreValue.textContent,
+        fontSize,
+    });
+    updatePreviousBoardObject({
+        boardSize,
+        boardState: null,
+        currentScore: null,
+        highScore: null,
+    });
 };
 
 export default initTiles;

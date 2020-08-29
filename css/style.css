@@ -248,6 +248,7 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  display: none;
 }
 
 .game-container .modals .modal-txt {

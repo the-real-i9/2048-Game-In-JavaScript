@@ -177,7 +177,7 @@ html, body {
         background: $white;
         border-radius: 5px;
         @include flex(center, center, column);
-        // display: none;
+        display: none;
 
         .modal-txt {
             font-size: 15px;

@@ -2,11 +2,14 @@ import {
     currentBoardSizeID,
 } from './currents.js';
 import {
-    grabNum,
     generateNewTile,
 } from './gameFuncs.js';
 
-import updateBoardObject from './updateBoardObject.js';
+import { grabNum } from './handyFuncs.js';
+
+import {
+    updateBoardObject,
+} from './updateBoardObject.js';
 import DOMElems from './DOMElems.js';
 const {
     tileBoard,
@@ -20,7 +23,12 @@ const playGame = (move) => {
 
     if (movementOcurred) {
         generateNewTile();
-        updateBoardObject(currentBoardSizeID, tileBoard.innerHTML, scoreValue.textContent, highScoreValue.textContent);
+        updateBoardObject({
+            boardSize: currentBoardSizeID,
+            boardState: tileBoard.innerHTML,
+            score: scoreValue.textContent,
+            highScore: highScoreValue.textContent,
+        });
     }
 };
 

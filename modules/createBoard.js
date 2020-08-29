@@ -1,15 +1,5 @@
 import { storeBoard } from './boardsStorage.js';
-import { grabNum } from './gameFuncs.js';
-
-// Board size object
-// Props:
-    // current Board state
-    // pevious Board state
-    // board grid
-    // padGap
-    // size of tile cells div by 2
-    // current score
-    // high score
+import { grabNum } from './handyFuncs.js';
 
 const getBoardString = (size) => {
     let boardString = '';
@@ -38,7 +28,9 @@ const createBoard = (boardSize) => {
         padGap: getPadGap(size),
         grid: size,
         currScore: 0,
+        prevCurrScore: null,
         hScore: 0,
+        prevHScore: null,
         fSize: 0,
 
         set fontSize(fnsize) {
@@ -59,8 +51,8 @@ const createBoard = (boardSize) => {
             return this.currBoardState;
         },
 
-        set previousBoardState(cbs) {
-            this.prevBoardState = cbs;
+        set previousBoardState(boardState) {
+            this.prevBoardState = boardState;
         },
 
         get previousBoardState() {
@@ -75,12 +67,28 @@ const createBoard = (boardSize) => {
             return this.currScore;
         },
 
+        set previousCurrentScore(score) {
+            this.prevCurrScore = score;
+        },
+
+        get previousCurrentScore() {
+            return this.prevCurrScore;
+        },
+
         set highScore(score) {
             this.hScore = score;
         },
 
         get highScore() {
             return this.hScore;
+        },
+
+        set previousHighScore(score) {
+            this.prevHScore = score;
+        },
+
+        get previousHighScore() {
+            return this.prevHScore;
         },
 
     };

@@ -20,10 +20,14 @@ import {
 } from '../modules/currents.js';
 
 import {
-    restartGame,
     noAlert,
+} from '../modules/handyFuncs.js';
+
+import {
+    restartGame,
     displayModal,
     terminateAction,
+    undoGame,
 } from '../modules/gameFuncs.js';
 
 const {
@@ -61,3 +65,7 @@ event(restartGameBtn, 'click', () => {
 });
 
 event(cancelBtn, 'click', terminateAction);
+
+event(undoGameBtn, 'click', () => {
+    undoGame(currentBoardSizeID);
+});
