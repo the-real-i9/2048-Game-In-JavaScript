@@ -6,6 +6,8 @@ let max = null;
 
 let movementOcurred = false;
 
+let gameWon = false;
+
 const moveToExtreme = (tileRowCol, dir) => {
     const allTileCells = [...selectAll('.tile-cell')];
     const isNegDir = dir === 'left' || dir === 'up';
@@ -31,6 +33,10 @@ const moveToExtreme = (tileRowCol, dir) => {
             setProp(currCell, 'innerHTML', '');
             updateScores(tileSum);
             movementOcurred = true;
+            if (tileSum === 2048 && gameWon === false) {
+                declareWin();
+                gameWon = true;
+            }
         } else {
             return;
         }

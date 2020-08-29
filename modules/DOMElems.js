@@ -18,6 +18,8 @@ const DOMElems = {
     topSection: select('.top'),
     cancelBtn: select('#cancel'),
     restartGameBtn: select('#click-restart'),
+    newGameBtn: select('#newgame'),
+    continueGameBtn: select('#continue'),
 };
 
 export default DOMElems;

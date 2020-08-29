@@ -260,7 +260,7 @@ html, body {
 }
 
 .game-container .modals .modal-actions button {
-  width: 75px;
+  width: 100px;
   height: 35.5px;
   margin: 5px 0;
   border: 1px solid #ccc9c9;

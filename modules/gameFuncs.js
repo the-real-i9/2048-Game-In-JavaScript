@@ -39,10 +39,6 @@ const generateNewTile = () => {
     setProp(randomEmptyTileCell, 'innerHTML', `<div class="tile tile-${tile}">${tile}</div>`);
 };
 
-const declareWin = () => {
-
-};
-
 const checkGameOver = () => {
 
 };
@@ -95,6 +91,10 @@ const displayModal = (type) => {
 
 const terminateAction = () => {
     [...modals].map((elem) => setStyle(elem, 'display', 'none'));
+};
+
+const declareWin = () => {
+    displayModal('continue-newgame');
 };
 
 export {
