@@ -1,7 +1,3 @@
-// If no local storage yet
-import {
-    setStyle,
-} from './manipFuncs.js';
 import DOMElems from './DOMElems.js';
 import renderTheme from './setTheme.js';
 import renderBoard from './boardRender.js';

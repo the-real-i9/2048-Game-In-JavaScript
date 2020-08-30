@@ -1,4 +1,3 @@
-/* eslint-disable import/no-mutable-exports */
 import DOMElems from './DOMElems.js';
 import {
     setProp,
@@ -6,7 +5,7 @@ import {
     setStyle,
 } from './manipFuncs.js';
 import initTiles from './initTiles.js';
-import { updatePreviousBoardObject, undoBoardObject } from './updateBoardObject.js';
+import { updatePreviousBoardObject, undoBoardObject, setBoardObjectGameWon } from './updateBoardObject.js';
 import { boardsDatabase } from './boardsStorage.js';
 import renderBoard from './boardRender.js';
 import { terminateAction } from './handyFuncs.js';
@@ -16,13 +15,6 @@ const {
     topSection,
     modals,
 } = DOMElems;
-
-let gameWon = false;
-
-const setGameWon = (bool) => {
-    gameWon = bool;
-    localStorage.setItem('game-won', JSON.stringify(bool));
-};
 
 
 const updateScores = (score) => {
@@ -112,7 +104,7 @@ const restartGame = (boardSize) => {
         highScore: null,
     });
     terminateAction();
-    setGameWon(false);
+    setBoardObjectGameWon(boardSize, false);
 };
 
 const displayModal = (type) => {
@@ -141,7 +133,6 @@ const declareGameOver = () => {
 
 const resetGame = () => {
     boardsDatabase.clear();
-    setGameWon(false);
 };
 
 export {
@@ -154,6 +145,4 @@ export {
     displayModal,
     undoGame,
     resetGame,
-    gameWon,
-    setGameWon,
 };

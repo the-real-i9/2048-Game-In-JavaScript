@@ -32,6 +32,15 @@ const createBoard = (boardSize) => {
         hScore: 0,
         prevHScore: null,
         fSize: 0,
+        gWon: false,
+
+        set gameWon(bool) {
+            this.gWon = bool;
+        },
+
+        get gameWon() {
+            return this.gWon;
+        },
 
         set fontSize(fnsize) {
             if (fnsize) {

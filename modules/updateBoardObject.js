@@ -52,8 +52,17 @@ const undoBoardObject = (boardSize) => {
     localStorage.setItem('boards-database', allBoardDatas);
 };
 
+const setBoardObjectGameWon = (boardSize, bool) => {
+    const board = boardsDatabase.get(boardSize);
+    board.gameWon = bool;
+
+    const allBoardDatas = JSON.stringify([...boardsDatabase], null, 4);
+    localStorage.setItem('boards-database', allBoardDatas);
+};
+
 export {
     updateBoardObject,
     updatePreviousBoardObject,
     undoBoardObject,
+    setBoardObjectGameWon,
 };

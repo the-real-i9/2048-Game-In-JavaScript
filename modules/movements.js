@@ -5,12 +5,13 @@ import {
 import {
     updateScores,
     declareWin,
-    gameWon,
-    setGameWon,
 } from './gameFuncs.js';
 import {
     grabNum,
 } from './handyFuncs.js';
+import { currentBoardSizeID } from './currents.js';
+import { setBoardObjectGameWon } from './updateBoardObject.js';
+import { boardsDatabase } from './boardsStorage.js';
 let cellIndex = null;
 let max = null;
 
@@ -42,9 +43,10 @@ const moveToExtreme = (tileRowCol, dir) => {
             setProp(currCell, 'innerHTML', '');
             updateScores(tileSum);
             movementOcurred = true;
+            const { gameWon } = boardsDatabase.get(currentBoardSizeID);
             if (tileSum === 2048 && gameWon === false) {
                 declareWin();
-                setGameWon(true);
+                setBoardObjectGameWon(currentBoardSizeID, true);
             }
         } else {
             return;
