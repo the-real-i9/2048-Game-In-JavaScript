@@ -1,14 +1,19 @@
 import {
     boardsDatabase,
 } from './boardsStorage.js';
+import { select } from './manipFuncs.js';
+import DOMElems from './DOMElems.js';
+const { tileBoard } = DOMElems;
 
 const updateBoardObject = ({
     boardSize,
     boardState,
     score,
     highScore,
-    fontSize,
 }) => {
+    const fontSize = select('.tile-cell').getBoundingClientRect().width;
+    tileBoard.style.setProperty('--font', `${fontSize}px`);
+
     const board = boardsDatabase.get(boardSize);
     board.previousBoardState = board.currentBoardState;
     board.previousCurrentScore = board.currentScore;

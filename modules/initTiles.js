@@ -1,7 +1,6 @@
 import {
     selectAll,
     setProp,
-    select,
 } from './manipFuncs.js';
 import {
     updateBoardObject, updatePreviousBoardObject,
@@ -25,15 +24,12 @@ const initTiles = (boardSize) => {
     initTileCells(tiles[Math.trunc(Math.random() * tiles.length)]);
     initTileCells(tiles[Math.trunc(Math.random() * tiles.length)]);
 
-    const fontSize = select('.tile-cell').getBoundingClientRect().width;
-    tileBoard.style.setProperty('--font', `${fontSize}px`);
 
     updateBoardObject({
         boardSize,
         boardState: tileBoard.innerHTML,
         score: scoreValue.textContent,
         highScore: highScoreValue.textContent,
-        fontSize,
     });
     updatePreviousBoardObject({
         boardSize,
