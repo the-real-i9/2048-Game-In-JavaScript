@@ -22,12 +22,12 @@ import {
 
 import {
     noAlert,
+    terminateAction,
 } from '../modules/handyFuncs.js';
 
 import {
     restartGame,
     displayModal,
-    terminateAction,
     undoGame,
 } from '../modules/gameFuncs.js';
 

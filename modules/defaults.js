@@ -1,11 +1,20 @@
 // If no local storage yet
-import { setStyle } from './manipFuncs.js';
+import {
+    setStyle,
+} from './manipFuncs.js';
 import DOMElems from './DOMElems.js';
 import renderTheme from './setTheme.js';
 import renderBoard from './boardRender.js';
 import themes from './themes.js';
-import { setCurrentTheme, setCurrentBoardSize } from './currents.js';
-const { checkBoxSize4, checkBoxThemeNeon, modals } = DOMElems;
+import {
+    setCurrentTheme,
+    setCurrentBoardSize,
+} from './currents.js';
+import { terminateAction } from './handyFuncs.js';
+const {
+    checkBoxSize4,
+    checkBoxThemeNeon,
+} = DOMElems;
 
 
 const settings = () => {
@@ -14,10 +23,10 @@ const settings = () => {
 
     setCurrentBoardSize(checkBoxSize4.id);
     renderBoard(checkBoxSize4.id);
+
+    terminateAction();
 };
 
 if (!localStorage.getItem('boards-database')) {
     settings();
 }
-
-[...modals].map((elem) => setStyle(elem, 'display', 'none'));

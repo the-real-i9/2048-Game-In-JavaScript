@@ -8,6 +8,7 @@ import initTiles from './initTiles.js';
 import { updatePreviousBoardObject, undoBoardObject } from './updateBoardObject.js';
 import { boardsDatabase } from './boardsStorage.js';
 import renderBoard from './boardRender.js';
+import { terminateAction } from './handyFuncs.js';
 const {
     scoreValue,
     highScoreValue,
@@ -33,13 +34,13 @@ const generateNewTile = () => {
     const empties = [...allTileCells].filter((elem) => !elem.innerHTML);
     const randomEmptyTileCell = empties[Math.trunc(Math.random() * empties.length)];
 
-    const tiles = [2, 2, 2, 2, 2, 4];
+    const tiles = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4];
     const tile = tiles[Math.trunc(Math.random() * tiles.length)];
 
     setProp(randomEmptyTileCell, 'innerHTML', `<div class="tile tile-${tile}">${tile}</div>`);
 };
 
-const checkGameOver = (boardSizeNum) => {
+const isGameOver = (boardSizeNum) => {
     const allTileCells = selectAll('.tile-cell');
     const boardFilled = [...allTileCells].every((elem) => elem.innerHTML);
     const re = />(\d+)<\//;
@@ -89,7 +90,7 @@ const undoGame = (boardSize) => {
         undoBoardObject(boardSize);
         renderBoard(boardSize);
     }
-    [...modals].map((elem) => setStyle(elem, 'display', 'none'));
+    terminateAction();
 };
 
 const restartGame = (boardSize) => {
@@ -102,10 +103,11 @@ const restartGame = (boardSize) => {
         currentScore: null,
         highScore: null,
     });
-    [...modals].map((elem) => setStyle(elem, 'display', 'none'));
+    terminateAction();
 };
 
 const displayModal = (type) => {
+    topSection.style.setProperty('--display', 'block');
     switch (type) {
         case 'restart-cancel':
             setStyle([...modals][0], 'display', 'flex');
@@ -118,11 +120,6 @@ const displayModal = (type) => {
             break;
         default:
     }
-    topSection.style.setProperty('--content', ' ');
-};
-
-const terminateAction = () => {
-    [...modals].map((elem) => setStyle(elem, 'display', 'none'));
 };
 
 const declareWin = () => {
@@ -137,10 +134,9 @@ export {
     updateScores,
     generateNewTile,
     declareWin,
-    checkGameOver,
+    isGameOver,
     declareGameOver,
     restartGame,
     displayModal,
-    terminateAction,
     undoGame,
 };

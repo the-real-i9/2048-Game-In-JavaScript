@@ -3,7 +3,7 @@ import {
 } from './currents.js';
 import {
     generateNewTile,
-    checkGameOver,
+    isGameOver,
     declareGameOver,
 } from './gameFuncs.js';
 
@@ -31,7 +31,7 @@ const playGame = (move) => {
             score: scoreValue.textContent,
             highScore: highScoreValue.textContent,
         });
-        if (checkGameOver(boardSize)) {
+        if (isGameOver(boardSize)) {
             declareGameOver();
         }
     }
