@@ -2,7 +2,7 @@ import renderBoard from './boardRender.js';
 import renderTheme from './setTheme.js';
 import themes from './themes.js';
 import { storeBoard } from './boardsStorage.js';
-import { setCurrentTheme, setCurrentBoardSize } from './currents.js';
+import { setCurrentTheme, setCurrentBoardSize, playSound } from './currents.js';
 import { terminateAction, grabNum } from './handyFuncs.js';
 import { isGameOver, declareGameOver } from './gameFuncs.js';
 
@@ -26,4 +26,6 @@ if (localStorage.getItem('boards-database')) {
     if (isGameOver(grabNum(restoreBoard))) {
         declareGameOver();
     }
+
+    playSound(JSON.parse(localStorage.getItem('play-sound')));
 }

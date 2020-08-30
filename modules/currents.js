@@ -1,6 +1,12 @@
 /* eslint-disable import/no-mutable-exports */
 let currentThemeID = null;
 let currentBoardSizeID = null;
+let isPlaySound = true;
+
+const playSound = (bool) => {
+    isPlaySound = bool;
+    localStorage.setItem('play-sound', JSON.stringify(bool));
+};
 
 const setCurrentTheme = (themeId) => {
     currentThemeID = themeId;
@@ -18,4 +24,6 @@ export {
     setCurrentTheme,
     currentThemeID,
     currentBoardSizeID,
+    isPlaySound,
+    playSound,
 };

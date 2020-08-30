@@ -1,5 +1,6 @@
 import {
     currentBoardSizeID,
+    isPlaySound,
 } from './currents.js';
 import {
     generateNewTile,
@@ -24,9 +25,11 @@ const bubbleSound = new Audio('../sound/bubble.mp3');
 const playGame = (move) => {
     const boardSize = grabNum(currentBoardSizeID);
     const movementOcurred = move(boardSize);
-    bubbleSound.load();
-    const p = bubbleSound.play();
-    p.catch((e) => undefined);
+    if (isPlaySound) {
+        bubbleSound.load();
+        const p = bubbleSound.play();
+        p.catch((e) => undefined);
+    }
 
     if (movementOcurred) {
         generateNewTile();

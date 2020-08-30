@@ -76,7 +76,7 @@ html, body {
 }
 
 .game-container .top .content-div .logo-div .tag .pad {
-  color: var(--pad);
+  color: var(--tileCell);
 }
 
 .game-container .top .content-div .actions-div {
@@ -265,7 +265,7 @@ html, body {
   margin: 5px 0;
   border: 1px solid #ccc9c9;
   border-radius: 4px;
-  background: #00575f;
+  background: var(--topColor);
   color: #fff;
   font-size: 13px;
   outline: none;
@@ -300,7 +300,7 @@ html, body {
   margin: 5px 0;
   border: 1px solid #ccc9c9;
   border-radius: 4px;
-  background: #00575f;
+  background: var(--topColor);
   color: #fff;
   font-size: 13px;
   outline: none;
@@ -371,6 +371,25 @@ html, body {
   position: relative;
 }
 
+.settings-div .settings-panel .panels .play-sound-option {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 7px 10px;
+  font-size: 15px;
+  margin-top: 40px;
+}
+
+.settings-div .settings-panel .panels .play-sound-option .check-box-play {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  margin-right: 10px;
+  position: relative;
+}
+
 .settings-div .settings-panel .theme {
   border-right: 1px solid #ccc9c9;
 }
@@ -382,8 +401,19 @@ html, body {
   left: 2px;
   right: 2px;
   bottom: 2px;
-  background: #00575f;
+  background: var(--topColor);
   border-radius: 50%;
+}
+
+.play-sound-option-selected::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: var(--topColor);
+  border-radius: 5px;
 }
 
 .tile-2 {
@@ -452,5 +482,36 @@ html, body {
 
 .tile-131072 {
   background: blueviolet;
+}
+
+.popup-notification {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 250px;
+  height: 30px;
+  border-radius: 5px;
+  background: var(--topColor);
+  color: #fff;
+  font-size: 13px;
+  bottom: 0;
+  opacity: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  -webkit-transition: bottom .3s ease, opacity .3s ease;
+  transition: bottom .3s ease, opacity .3s ease;
+}
+
+.popup-push {
+  bottom: 40px !important;
+  opacity: 1 !important;
 }
 /*# sourceMappingURL=style.css.map */

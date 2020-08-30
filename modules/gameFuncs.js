@@ -3,6 +3,7 @@ import {
     setProp,
     selectAll,
     setStyle,
+    classAction,
 } from './manipFuncs.js';
 import initTiles from './initTiles.js';
 import { updatePreviousBoardObject, undoBoardObject, setBoardObjectGameWon } from './updateBoardObject.js';
@@ -14,6 +15,7 @@ const {
     highScoreValue,
     topSection,
     modals,
+    popUpNotification,
 } = DOMElems;
 
 
@@ -78,17 +80,26 @@ const isGameOver = (boardSizeNum) => {
     return false;
 };
 
+const pushNotification = (message) => {
+    classAction(popUpNotification, 'remove', 'popup-push');
+    setProp(popUpNotification, 'textContent', message);
+    classAction(popUpNotification, 'add', 'popup-push');
+    setTimeout(() => {
+        classAction(popUpNotification, 'remove', 'popup-push');
+    }, 1000);
+};
+
 const undoGame = (boardSize) => {
     const boardObject = boardsDatabase.get(boardSize);
     if (boardObject.previousBoardState === boardObject.currentBoardState) {
-        // console.log("You can't undo twice");
-        // show pop up here
+        pushNotification('Undo Failed: One Undo per move');
         return;
     }
 
     if (boardObject.previousBoardState) {
         undoBoardObject(boardSize);
         renderBoard(boardSize);
+        pushNotification('Undo Successful');
     }
     terminateAction();
 };
@@ -133,6 +144,7 @@ const declareGameOver = () => {
 
 const resetGame = () => {
     boardsDatabase.clear();
+    pushNotification('Reset Successful');
 };
 
 export {

@@ -1,5 +1,6 @@
 import { select, selectAll } from './manipFuncs.js';
 const DOMElems = {
+    body: select('body'),
     settingsBtn: select('.settings'),
     gameContainer: select('.game-container'),
     settingsContainer: select('.settings-div'),
@@ -23,6 +24,8 @@ const DOMElems = {
     undoGameOverBtn: select('#undo-gameover'),
     restartGameOverBtn: select('#gameover-restart'),
     resetGameBtn: select('.reset-game'),
+    popUpNotification: select('.popup-notification'),
+    checkBoxPlay: select('.check-box-play'),
 };
 
 export default DOMElems;

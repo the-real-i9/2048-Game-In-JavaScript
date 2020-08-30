@@ -61,7 +61,7 @@ html, body {
                     color: $tagColor;
 
                     .pad {
-                        color: var(--pad); // Random Colors
+                        color: var(--tileCell);
                     }
                 }
             }
@@ -192,7 +192,7 @@ html, body {
                 margin: 5px 0;
                 border: 1px solid rgb(204, 201, 201);
                 border-radius: 4px;
-                background: #00575f;
+                background: var(--topColor);
                 color: #fff;
                 font-size: 13px;
                 outline: none;
@@ -213,7 +213,7 @@ html, body {
             margin: 5px 0;
             border: 1px solid rgb(204, 201, 201);
             border-radius: 4px;
-            background: #00575f;
+            background: var(--topColor);
             color: #fff;
             font-size: 13px;
             outline: none;
@@ -257,6 +257,24 @@ html, body {
                     position: relative;
                 }
             }
+
+            .play-sound-option {
+                width: 100%;
+                @include flex();
+                padding: 7px 10px;
+                font-size: 15px;
+                margin-top: 40px;
+
+                .check-box-play {
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 5px;
+                    border: 2px solid #000;
+                    margin-right: 10px;
+                    position: relative;
+                }
+            }
+
         }
     
         .theme {
@@ -274,26 +292,61 @@ html, body {
         left: 2px;
         right: 2px;
         bottom: 2px;
-        background: #00575f;
+        background: var(--topColor);
         border-radius: 50%;
 
     }
 }
 
-    .tile-2 { background: #8c00da };
-    .tile-4 { background: #ed124b };
-    .tile-8 { background: #f28c0d };
-    .tile-16 { background: #00950d };
-    .tile-32 { background: #00575f };
-    .tile-64 { background: #f60023 };
-    .tile-128 { background: #ed450b };
-    .tile-256 { background: #2ecc48 };
-    .tile-512 { background: #521750 };
-    .tile-1024 { background: #A50516};
-    .tile-2048 { background: brown};
-    .tile-4096 { background: magenta};
-    .tile-8192 { background: salmon };
-    .tile-16384 { background: orangered};
-    .tile-32768 { background: yellowgreen};
-    .tile-65536 { background: teal};
-    .tile-131072 { background: blueviolet};
+.play-sound-option-selected {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background: var(--topColor);
+        border-radius: 5px;
+    }
+}
+
+.tile-2 { background: #8c00da };
+.tile-4 { background: #ed124b };
+.tile-8 { background: #f28c0d };
+.tile-16 { background: #00950d };
+.tile-32 { background: #00575f };
+.tile-64 { background: #f60023 };
+.tile-128 { background: #ed450b };
+.tile-256 { background: #2ecc48 };
+.tile-512 { background: #521750 };
+.tile-1024 { background: #A50516};
+.tile-2048 { background: brown};
+.tile-4096 { background: magenta};
+.tile-8192 { background: salmon };
+.tile-16384 { background: orangered};
+.tile-32768 { background: yellowgreen};
+.tile-65536 { background: teal};
+.tile-131072 { background: blueviolet};
+
+.popup-notification {
+    position: absolute;
+    @include flex(center, center);
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    background: var(--topColor);
+    color: $white;
+    font-size: 13px;
+    bottom: 0;
+    opacity: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    transition: bottom .3s ease,
+                opacity .3s ease;
+}
+
+.popup-push {
+    bottom: 40px !important;
+    opacity: 1 !important;
+}

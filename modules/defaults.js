@@ -5,13 +5,13 @@ import themes from './themes.js';
 import {
     setCurrentTheme,
     setCurrentBoardSize,
+    playSound,
 } from './currents.js';
 import { terminateAction } from './handyFuncs.js';
 const {
     checkBoxSize4,
     checkBoxThemeNeon,
 } = DOMElems;
-
 
 const settings = () => {
     setCurrentTheme(checkBoxThemeNeon.id);
@@ -21,6 +21,8 @@ const settings = () => {
     renderBoard(checkBoxSize4.id);
 
     terminateAction();
+
+    playSound(true);
 };
 
 if (!localStorage.getItem('boards-database')) {

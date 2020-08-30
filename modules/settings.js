@@ -10,6 +10,8 @@ import {
     currentThemeID,
     setCurrentBoardSize,
     setCurrentTheme,
+    playSound,
+    isPlaySound,
 } from './currents.js';
 import renderTheme from './setTheme.js';
 import renderBoard from './boardRender.js';
@@ -19,7 +21,12 @@ const {
     gameContainer,
     checkBoxSize,
     checkBoxTheme,
+    checkBoxPlay,
 } = DOMElems;
+
+if (isPlaySound) {
+    classAction(checkBoxPlay, 'add', 'play-sound-option-selected');
+}
 classAction(select(`#${currentBoardSizeID}`), 'add', 'size-option-selected');
 classAction(select(`#${currentThemeID}`), 'add', 'theme-option-selected');
 const switchToSettings = () => {
@@ -42,6 +49,10 @@ const switchToSettings = () => {
             classAction(elem, 'add', 'theme-option-selected');
         });
     }
+
+    event(checkBoxPlay, 'click', () => {
+        classAction(checkBoxPlay, 'toggle', 'play-sound-option-selected');
+    });
 };
 
 const saveSettings = () => {
@@ -60,6 +71,12 @@ const saveSettings = () => {
 
     renderBoard(selectedBoardSizeID);
     setCurrentBoardSize(selectedBoardSizeID);
+
+    if (checkBoxPlay.classList.contains('play-sound-option-selected')) {
+        playSound(true);
+    } else {
+        playSound(false);
+    }
 };
 
 export {
