@@ -58,10 +58,8 @@ const saveSettings = () => {
         setCurrentTheme(selectedThemeID);
     }
 
-    if (selectedBoardSizeID !== currentBoardSizeID) {
-        renderBoard(selectedBoardSizeID);
-        setCurrentBoardSize(selectedBoardSizeID);
-    }
+    renderBoard(selectedBoardSizeID);
+    setCurrentBoardSize(selectedBoardSizeID);
 };
 
 export {

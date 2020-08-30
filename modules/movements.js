@@ -1,12 +1,20 @@
-import { selectAll, setProp } from './manipFuncs.js';
-import { updateScores, declareWin } from './gameFuncs.js';
-import { grabNum } from './handyFuncs.js';
+import {
+    selectAll,
+    setProp,
+} from './manipFuncs.js';
+import {
+    updateScores,
+    declareWin,
+    gameWon,
+    setGameWon,
+} from './gameFuncs.js';
+import {
+    grabNum,
+} from './handyFuncs.js';
 let cellIndex = null;
 let max = null;
 
 let movementOcurred = false;
-
-let gameWon = false;
 
 const moveToExtreme = (tileRowCol, dir) => {
     const allTileCells = [...selectAll('.tile-cell')];
@@ -29,13 +37,14 @@ const moveToExtreme = (tileRowCol, dir) => {
         const currCellText = currCell.innerHTML.match(re)[1];
         if (nextOrPrevCellText === currCellText) {
             const tileSum = Number(nextOrPrevCellText) + Number(currCellText);
+            if (tileSum === 262144) return;
             setProp(nextOrPrevCell, 'innerHTML', `<div class="tile tile-${tileSum}">${tileSum}</div>`);
             setProp(currCell, 'innerHTML', '');
             updateScores(tileSum);
             movementOcurred = true;
             if (tileSum === 2048 && gameWon === false) {
                 declareWin();
-                gameWon = true;
+                setGameWon(true);
             }
         } else {
             return;
@@ -53,7 +62,10 @@ const moveToExtreme = (tileRowCol, dir) => {
 const moveLeft = () => {
     const allTilesElem = [...selectAll('.tile')];
     const parent = allTilesElem.map((elem) => elem.parentElement);
-    const rowHrCell = parent.map((elem) => [[...elem.classList][1], [...elem.classList][2]]);
+    const rowHrCell = parent.map((elem) => [
+        [...elem.classList][1],
+        [...elem.classList][2],
+    ]);
 
     for (const elem of rowHrCell) {
         const row = elem[0];
@@ -72,7 +84,10 @@ const moveLeft = () => {
 const moveRight = (boardSize) => {
     const allTilesElem = [...selectAll('.tile')];
     const parent = allTilesElem.map((elem) => elem.parentElement);
-    const rowHrCell = parent.map((elem) => [[...elem.classList][1], [...elem.classList][2]]);
+    const rowHrCell = parent.map((elem) => [
+        [...elem.classList][1],
+        [...elem.classList][2],
+    ]);
 
     for (let elem = rowHrCell.length - 1; elem > -1; elem--) {
         const row = rowHrCell[elem][0];
@@ -92,7 +107,10 @@ const moveRight = (boardSize) => {
 const moveUp = () => {
     const allTilesElem = [...selectAll('.tile')];
     const parent = allTilesElem.map((elem) => elem.parentElement);
-    const colVtCell = parent.map((elem) => [[...elem.classList][3], [...elem.classList][4]]);
+    const colVtCell = parent.map((elem) => [
+        [...elem.classList][3],
+        [...elem.classList][4],
+    ]);
 
     for (const elem of colVtCell) {
         const col = elem[0];
@@ -111,7 +129,10 @@ const moveUp = () => {
 const moveDown = (boardSize) => {
     const allTilesElem = [...selectAll('.tile')];
     const parent = allTilesElem.map((elem) => elem.parentElement);
-    const colVtCell = parent.map((elem) => [[...elem.classList][3], [...elem.classList][4]]);
+    const colVtCell = parent.map((elem) => [
+        [...elem.classList][3],
+        [...elem.classList][4],
+    ]);
 
     for (let elem = colVtCell.length - 1; elem > -1; elem--) {
         const col = colVtCell[elem][0];

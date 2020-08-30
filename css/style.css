@@ -288,7 +288,13 @@ html, body {
   display: none;
 }
 
-.settings-div .save-settings {
+.settings-div .settings-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.settings-div .settings-actions button {
   width: 80px;
   height: 40px;
   margin: 5px 0;
@@ -296,8 +302,13 @@ html, body {
   border-radius: 4px;
   background: #00575f;
   color: #fff;
-  font-size: 17px;
+  font-size: 13px;
   outline: none;
+}
+
+.settings-div .settings-actions .reset-game {
+  width: 100px;
+  margin-left: 5px;
 }
 
 .settings-div .settings-panel {

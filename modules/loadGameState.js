@@ -4,7 +4,7 @@ import themes from './themes.js';
 import { storeBoard } from './boardsStorage.js';
 import { setCurrentTheme, setCurrentBoardSize } from './currents.js';
 import { terminateAction, grabNum } from './handyFuncs.js';
-import { isGameOver, declareGameOver } from './gameFuncs.js';
+import { isGameOver, declareGameOver, setGameWon } from './gameFuncs.js';
 
 terminateAction();
 
@@ -26,4 +26,6 @@ if (localStorage.getItem('boards-database')) {
     if (isGameOver(grabNum(restoreBoard))) {
         declareGameOver();
     }
+
+    setGameWon(JSON.parse(localStorage.getItem('game-won')));
 }

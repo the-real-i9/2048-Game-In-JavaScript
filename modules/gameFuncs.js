@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 import DOMElems from './DOMElems.js';
 import {
     setProp,
@@ -15,6 +16,13 @@ const {
     topSection,
     modals,
 } = DOMElems;
+
+let gameWon = false;
+
+const setGameWon = (bool) => {
+    gameWon = bool;
+    localStorage.setItem('game-won', JSON.stringify(bool));
+};
 
 
 const updateScores = (score) => {
@@ -104,6 +112,7 @@ const restartGame = (boardSize) => {
         highScore: null,
     });
     terminateAction();
+    setGameWon(false);
 };
 
 const displayModal = (type) => {
@@ -130,6 +139,11 @@ const declareGameOver = () => {
     displayModal('undo-restart');
 };
 
+const resetGame = () => {
+    boardsDatabase.clear();
+    setGameWon(false);
+};
+
 export {
     updateScores,
     generateNewTile,
@@ -139,4 +153,7 @@ export {
     restartGame,
     displayModal,
     undoGame,
+    resetGame,
+    gameWon,
+    setGameWon,
 };

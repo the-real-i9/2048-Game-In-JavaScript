@@ -29,6 +29,7 @@ import {
     restartGame,
     displayModal,
     undoGame,
+    resetGame,
 } from '../modules/gameFuncs.js';
 
 const {
@@ -42,6 +43,7 @@ const {
     newGameBtn,
     undoGameOverBtn,
     restartGameOverBtn,
+    resetGameBtn,
 } = DOMElems;
 
 event(settingsBtn, 'click', switchToSettings);
@@ -87,3 +89,5 @@ event(undoGameOverBtn, 'click', () => {
 event(restartGameOverBtn, 'click', () => {
     restartGame(currentBoardSizeID);
 });
+
+event(resetGameBtn, 'click', resetGame);
