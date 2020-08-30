@@ -1,3 +1,4 @@
+import '../modules/loadGameState.js';
 import '../modules/defaults.js';
 import {
     event,

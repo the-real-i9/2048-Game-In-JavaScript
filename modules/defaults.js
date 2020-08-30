@@ -7,6 +7,7 @@ import themes from './themes.js';
 import { setCurrentTheme, setCurrentBoardSize } from './currents.js';
 const { checkBoxSize4, checkBoxThemeNeon, modals } = DOMElems;
 
+
 const settings = () => {
     setCurrentTheme(checkBoxThemeNeon.id);
     renderTheme(themes.get(checkBoxThemeNeon.id));
@@ -15,6 +16,8 @@ const settings = () => {
     renderBoard(checkBoxSize4.id);
 };
 
-settings();
+if (!localStorage.getItem('boards-database')) {
+    settings();
+}
 
 [...modals].map((elem) => setStyle(elem, 'display', 'none'));

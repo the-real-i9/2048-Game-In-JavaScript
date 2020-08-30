@@ -17,6 +17,9 @@ const updateBoardObject = ({
     board.currentScore = Number(score);
     board.highScore = Number(highScore);
     board.fontSize = fontSize;
+
+    const allBoardDatas = JSON.stringify([...boardsDatabase], null, 4);
+    localStorage.setItem('boards-database', allBoardDatas);
 };
 
 const updatePreviousBoardObject = ({
@@ -29,6 +32,9 @@ const updatePreviousBoardObject = ({
     board.previousBoardState = boardState;
     board.previousCurrentScore = currentScore;
     board.previousHighScore = highScore;
+
+    const allBoardDatas = JSON.stringify([...boardsDatabase], null, 4);
+    localStorage.setItem('boards-database', allBoardDatas);
 };
 
 const undoBoardObject = (boardSize) => {
@@ -36,6 +42,9 @@ const undoBoardObject = (boardSize) => {
     board.currentBoardState = board.previousBoardState;
     board.currentScore = board.previousCurrentScore;
     board.highScore = board.previousHighScore;
+
+    const allBoardDatas = JSON.stringify([...boardsDatabase], null, 4);
+    localStorage.setItem('boards-database', allBoardDatas);
 };
 
 export {
