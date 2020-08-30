@@ -12,6 +12,8 @@ import {
 import { currentBoardSizeID } from './currents.js';
 import { setBoardObjectGameWon } from './updateBoardObject.js';
 import { boardsDatabase } from './boardsStorage.js';
+
+
 let cellIndex = null;
 let max = null;
 
