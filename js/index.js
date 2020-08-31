@@ -91,3 +91,9 @@ event(restartGameOverBtn, 'click', () => {
 });
 
 event(resetGameBtn, 'click', resetGame);
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../cache_app_v1.js');
+    });
+}
