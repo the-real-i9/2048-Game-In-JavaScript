@@ -1,6 +1,8 @@
 import {
     selectAll,
     setProp,
+    classAction,
+    select,
 } from './manipFuncs.js';
 import {
     updateScores,

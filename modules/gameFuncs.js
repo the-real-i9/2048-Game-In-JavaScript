@@ -4,6 +4,7 @@ import {
     selectAll,
     setStyle,
     classAction,
+    select,
 } from './manipFuncs.js';
 import initTiles from './initTiles.js';
 import { updatePreviousBoardObject, undoBoardObject, setBoardObjectGameWon } from './updateBoardObject.js';
