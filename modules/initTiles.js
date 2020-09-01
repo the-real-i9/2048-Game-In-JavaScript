@@ -1,7 +1,6 @@
 import {
     selectAll,
     setProp,
-    classAction,
 } from './manipFuncs.js';
 import {
     updateBoardObject, updatePreviousBoardObject,

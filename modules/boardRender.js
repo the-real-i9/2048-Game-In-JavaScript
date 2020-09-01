@@ -2,7 +2,7 @@ import {
     boardsDatabase,
 } from './boardsStorage.js';
 import createBoard from './createBoard.js';
-import { setProp, selectAll } from './manipFuncs.js';
+import { setProp } from './manipFuncs.js';
 import initTiles from './initTiles.js';
 import DOMElems from './DOMElems.js';
 

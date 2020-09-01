@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import '../modules/loadGameState.js';
 import '../modules/defaults.js';
 import {
@@ -49,21 +50,6 @@ const {
 
 event(settingsBtn, 'click', switchToSettings);
 event(saveSettingsBtn, 'click', saveSettings);
-
-/* event(document, 'keyup', (ev) => {
-    if (noAlert()) {
-
-        if (ev.keyCode === 37) {
-            playGame(moveLeft);
-        } else if (ev.keyCode === 38) {
-            playGame(moveUp);
-        } else if (ev.keyCode === 39) {
-            playGame(moveRight);
-        } else if (ev.keyCode === 40) {
-            playGame(moveDown);
-        }
-    }
-}); */
 
 $_SwipeJS(gameContainer).addSwipeListener('swipeleft', () => {
     if (noAlert()) {
