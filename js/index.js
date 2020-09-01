@@ -44,13 +44,15 @@ const {
     undoGameOverBtn,
     restartGameOverBtn,
     resetGameBtn,
+    gameContainer,
 } = DOMElems;
 
 event(settingsBtn, 'click', switchToSettings);
 event(saveSettingsBtn, 'click', saveSettings);
 
-event(document, 'keyup', (ev) => {
+/* event(document, 'keyup', (ev) => {
     if (noAlert()) {
+
         if (ev.keyCode === 37) {
             playGame(moveLeft);
         } else if (ev.keyCode === 38) {
@@ -60,6 +62,30 @@ event(document, 'keyup', (ev) => {
         } else if (ev.keyCode === 40) {
             playGame(moveDown);
         }
+    }
+}); */
+
+$_SwipeJS(gameContainer).addSwipeListener('swipeleft', () => {
+    if (noAlert()) {
+        playGame(moveLeft);
+    }
+});
+
+$_SwipeJS(gameContainer).addSwipeListener('swipeup', () => {
+    if (noAlert()) {
+        playGame(moveUp);
+    }
+});
+
+$_SwipeJS(gameContainer).addSwipeListener('swiperight', () => {
+    if (noAlert()) {
+        playGame(moveRight);
+    }
+});
+
+$_SwipeJS(gameContainer).addSwipeListener('swipedown', () => {
+    if (noAlert()) {
+        playGame(moveDown);
     }
 });
 
